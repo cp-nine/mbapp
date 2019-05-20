@@ -1,0 +1,36 @@
+<app-container>
+<div class="row">
+  <div class="col-sm-12">
+    <app-card>
+      <div class="row">
+        <div class="col-sm-12">
+          <h5>Transactions</h5>
+          <hr>
+          <table class="table table-striped" id="tb-transaction">
+            <thead>
+              <tr>
+                <th scope="col">No</th>
+                <th scope="col">Transactions</th>
+                <th scope="col">Debet</th>
+                <th scope="col">Credit</th>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let tr of transactions; let i = index;">
+                <td>{{i+1}}</td>
+                <td scope="row">{{tr.trxName}}</td>
+                <td scope="row">{{tr.acnDebet}}</td>
+                <td scope="row">{{tr.acnCredit}}</td>
+                <td scope="row">{{tr.trxDate | date: 'longDate'}}</td>
+                <td scope="row">{{tr.amount | currency:'Rp. '}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>
+</app-container>

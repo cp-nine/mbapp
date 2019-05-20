@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <form action="#" [formGroup]="formTopup" (ngSubmit)="onSubmit()">
+
+        <div class="form-group" *ngIf="!inputPin">
+          <label for="">Account Number <span class="mandatory">{{'' | mandatory}}</span></label>
+          <select formControlName="accountNumber" id="" class="form-control">
+            <option value="">Select Account Number</option>
+            <option *ngFor="let i of accounts" value="{{i.accountNumber}}">{{i.accountNumber}}</option>
+          </select>
+        </div>
+
+      <div class="form-group" *ngIf="!inputPin">
+        <label for="">Nominal <span class="mandatory">{{'' | mandatory}}</span> {{nominal | currency:'Rp.'}}</label>
+        <input type="number" formControlName="amount" class="form-control" [(ngModel)]="nominal">
+        <br>
+        <button type="button" class="btn btn-primary" (click)="saveTrx()">Ok</button> &nbsp;
+        <button type="button" class="btn btn-warning" (click)="back()">Back</button>
+      </div>
+
+      <div class="form-group" *ngIf="inputPin">
+        <label for="">Enter Pin <span class="mandatory">{{'' | mandatory}}</span></label>
+        <input type="password" formControlName="pin" class="form-control" placeholder="x x x x x x">
+        <br>
+        <button type="submit" class="btn btn-primary">Ok</button> &nbsp;
+      </div>
+
+    </form>
+
+  </div>
+</div>

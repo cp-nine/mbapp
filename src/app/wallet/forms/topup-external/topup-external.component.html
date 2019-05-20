@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <form action="#" [formGroup]="formTopup" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="">Nominal <span class="mandatory">{{'' | mandatory}}</span> {{nominal | currency: 'Rp.'}}</label>
+        <input type="number" formControlName="amount" class="form-control" [(ngModel)]="nominal">
+        <br>
+        <button type="submit" class="btn btn-primary">Ok</button> &nbsp;
+        <button type="button" class="btn btn-warning" (click)="back()">Back</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

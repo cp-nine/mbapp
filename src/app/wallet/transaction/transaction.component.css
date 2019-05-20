@@ -1,0 +1,7 @@
+.trx a {
+  color: rgb(45, 46, 46)
+}
+
+.trx .active {
+  color: rgb(255, 255, 255)
+}

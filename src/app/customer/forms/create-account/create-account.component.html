@@ -1,0 +1,57 @@
+<app-container>
+  <app-card>
+      <div class="row">
+        <div class="col-md-6">
+            <form action="#" [formGroup]="acnForm" (ngSubmit)="addAccount()">
+
+                <div class="alert alert-info text-center">
+                  <p style="margin-bottom:0;" *ngIf="message !== ''">{{message}}</p>
+                  <p style="margin-bottom:0;" *ngIf="message === ''">Minimum ballance {{200000 |currency: 'Rp. '}}</p>
+                </div>
+          
+                <div class="form-group">
+                  <label for="">Account Name</label>
+                  <input type="text" formControlName="accountName" class="form-control" id="accountName"
+                    placeholder="Account Name" [ngClass]="{ 'is-invalid': submitted && f.accountName.errors }">
+                </div>
+
+                <div class="form-group">
+                  <input type="checkbox" (change)="insertOption()"> Insert Fisrt Ballance    
+                </div>
+
+                <div class="form-group" *ngIf="insertBalance">
+                  <label for="">First Balance - Go Pay</label>
+                  <input type="number" formControlName="balance" class="form-control" id="balance" placeholder="Balance"
+                    [ngClass]="{ 'is-invalid': submitted && f.balance.errors }">
+                </div>
+
+                <div class="form-group">
+                  <label for="">PIN</label>
+                  <input type="password" formControlName="pin" class="form-control" id="pin" placeholder="Pin"
+                    [ngClass]="{ 'is-invalid': submitted && f.pin.errors }">
+                </div>
+                <div class="form-group">
+                  <label for="">Retype PIN</label>
+                  <input type="password" formControlName="cpin" class="form-control" id="confirmPin"
+                    placeholder="Confirm Pin" [ngClass]="{ 'is-invalid': submitted && f.cpin.errors }">
+                </div>
+
+                <div class="form-group">
+                    <app-button [type]="'submit'" [clases]="'btn-primary'">Save</app-button>
+                </div>
+              </form>
+        </div>
+        <div class="col-md-6">
+          <div class="row" *ngIf="option">
+            <div class="col-md-12">
+                <a href="javascript:void(0)" (click)="firstBalance()">
+                  <app-card>
+                    Go Pay
+                  </app-card>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </app-card>
+</app-container>

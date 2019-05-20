@@ -1,0 +1,71 @@
+  <app-container>
+    <div class="row" style="padding-bottom: 50px;">
+      <div class="col-md-4">
+        <app-card>
+          <div class="img-profile">
+            <img src="assets/images/lufy.jpg" alt="">
+          </div>
+
+          <div class="detail-profile">
+            <hr>
+            <h5>{{customer.firstName}} {{customer.lastName}}</h5>
+            <p>{{customer.placeOb}}, {{customer.birthDate | date: 'longDate'}}</p>
+            <p>{{customer.email}}</p>
+            <p>{{customer.phoneNumber}}</p>
+            <hr>
+            </div>
+        </app-card>
+      </div>
+      <div class="col-md-8">
+        <app-card>
+              
+          <h5>Data Profile 
+          </h5>
+          <hr>
+  
+          <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row" width="150px">Identity Card</th>
+                    <td>{{customer.cardIdentity}}</td>
+                  </tr>
+              <tr>
+                <th scope="row" width="150px">Name</th>
+                <td>{{customer.firstName}} {{customer.lastName}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Gender</th>
+                <td>{{customer.gender}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Place Of Birth</th>
+                <td>{{customer.placeOb}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Birth Of Date</th>
+                <td>{{customer.birthDate | date: 'longDate'}}</td>
+              </tr>
+              <tr>
+                  <th scope="row">Mother</th>
+                  <td>{{customer.moms}}</td>
+                </tr>
+              <tr>
+                <th scope="row">Email</th>
+                <td>{{customer.email}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Phone Number</th>
+                <td>{{customer.phoneNumber}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Address</th>
+                <td>{{customer.address}}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </app-card>
+      </div>
+    </div>
+
+  </app-container>

@@ -1,0 +1,66 @@
+<app-container>
+  <div class="row" style="padding-bottom: 50px;">
+    <div class="col-md-4">
+      <app-card>
+        <div class="img-profile">
+          <img src="assets/images/lufy.jpg" alt="">
+        </div>
+
+        <div class="detail-profile">
+          <hr>
+          <h5>{{wallet.walletName}}</h5>
+          <p>${{wallet.cashTag}}</p>
+          <p>{{wallet.balance | currency: 'Rp.'}}</p>
+          <hr>
+          <div class="row">
+            <div class="col-sm-6">
+              <app-button [type]="'button'" 
+                          [clases]="'btn-success btn-sm btn-block'"
+                          (click)="goesToHome()">Home</app-button>
+            </div>
+            <div class="col-sm-6">
+              <app-button [type]="'button'" 
+                          [clases]="'btn-primary btn-sm btn-block'"
+                          (click)="editWallet()">Edit</app-button>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </app-card>
+    </div>
+    <div class="col-md-8">
+      <app-card>
+
+        <h5>Wallet Profile</h5>
+        <hr>
+
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row" width="150px">Wallet Name</th>
+              <td>{{wallet.walletName}}</td>
+            </tr>
+            <tr>
+              <th scope="row" width="150px">Cash Tag</th>
+              <td>${{wallet.cashTag}}</td>
+            </tr>
+            <tr>
+              <th scope="row">User</th>
+              <td>{{wallet.fullName}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td>{{wallet.email}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Phone Number</th>
+              <td>{{wallet.phoneNumber}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </app-card>
+    </div>
+  </div>
+
+</app-container>

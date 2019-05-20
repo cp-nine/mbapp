@@ -1,0 +1,66 @@
+<div class="login-form">
+    <div class="row justify-content-sm-center justify-content-md-center">
+      <div class="col-sm-6 col-md-6">
+        <div class="form-body">
+          <div class="row">
+            <div class="col-sm-5 bg-blue left-block">
+              <i class="fas fa-building fa-5x"></i>
+              <h3><a href="/" style="color:white; text-decoration: none;"> Mini Bank </a></h3>
+              <p>Your Financial Partner</p>
+            </div>
+            <div class="col-sm-7 bg-white right-block">
+
+              <div class="alert alert-danger text-center" *ngIf="loginFailed">
+                <p style="margin-bottom:0;">{{message}}</p>
+              </div>
+
+              <form [formGroup]="loginForm" (ngSubmit)="loginProcess()">
+
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">
+                    <i class="fas fa-user fa-2x"></i>
+                  </label>
+                  <div class="col-sm-10">
+                    <input type="text" formControlName="username" class="form-control" id="username"
+                      placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Username is required</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-2 col-form-label">
+                    <i class="fas fa-lock fa-2x"></i>
+                  </label>
+                  <div class="col-sm-10">
+                    <input type="password" formControlName="password" class="form-control" id="inputPassword3"
+                      placeholder="Password"
+                      [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-2">&nbsp;</div>
+                  <div class="col-sm-6" style="padding-top:10px;">
+                    &nbsp;&nbsp;&nbsp;
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
+                      Remember me ?
+                    </label> <br>
+                    <a routerLink="/customer/register">-- Register</a>
+                  </div>
+                  <div class="col-sm-4">
+                    <app-button [type]="'submit'" [clases]="'btn-primary  btn-block'">Login</app-button>
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

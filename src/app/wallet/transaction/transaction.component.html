@@ -1,0 +1,103 @@
+<app-container>
+  <div class="row" style="padding-bottom: 50px;">
+    <div class="col-md-3 trx">
+      <app-card>
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+            aria-controls="v-pills-home" aria-selected="true">Top Up</a>
+          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+            aria-controls="v-pills-profile" aria-selected="false">Transfer</a>
+          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab"
+            aria-controls="v-pills-messages" aria-selected="false">Withdrawal</a>
+          <!-- <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
+            aria-controls="v-pills-settings" aria-selected="false">Settings</a> -->
+        </div>
+      </app-card>
+    </div>
+    <div class="col-md-9">
+      <app-card>
+        <div class="tab-content" id="v-pills-tabContent">
+          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="row">
+              <div class="col-md-12"><h5>Top Up Wallet</h5><hr></div>
+              <div class="col-sm-6" *ngIf="option">
+                <app-button (click)="topupEx()" [clases]="'btn-success btn-block'">
+                  <i class="fab fa-cc-visa fa-7x"></i><br><h2>Visa</h2>
+                </app-button>
+              </div>
+              <div class="col-sm-6" *ngIf="option">
+                <app-button (click)="topupAc()" [clases]="'btn-danger btn-block'">
+                  <i class="fab fa-cc-mastercard fa-7x"></i><br><h2>Account</h2>
+                </app-button>
+              </div>
+
+              <div class="col-md-12" *ngIf="!option">
+                <app-topup-external *ngIf="topupex" (emmiter)="topupExEmmit($event)"></app-topup-external>
+                <app-topup-account *ngIf="topupac" (emmiter)="topupAcEmmit($event)"></app-topup-account>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div class="row">
+                <div class="col-md-12"><h5>Transfer</h5><hr></div>
+              <div class="col-sm-6" *ngIf="option">
+                <app-button (click)="transferWa()" [clases]="'btn-success btn-block'">
+                  <i class="fas fa-credit-card fa-7x"></i><br><h2>Virtual</h2>
+                </app-button>
+              </div>
+              <div class="col-sm-6" *ngIf="option">
+                <app-button (click)="transferAc()" [clases]="'btn-danger btn-block'">
+                  <i class="fab fa-cc-mastercard fa-7x"></i><br><h2>Account</h2>
+                </app-button>
+              </div>
+
+              <div class="col-md-12" *ngIf="!option">
+                  <app-transfer-wallet *ngIf="transfer" (emmiter)="transferWaEmmit($event)"></app-transfer-wallet>
+                  <app-transfer-account *ngIf="transferac" (emmiter)="transferAcEmmit($event)"></app-transfer-account>
+                </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            <div class="row">
+                <div class="col-md-12"><h5>Withdrawal</h5><hr></div>
+              <div class="col-sm-6" *ngIf="option">
+                <app-button (click)="withdrawalWa()" [clases]="'btn-success btn-block'">
+                  <i class="fas fa-credit-card fa-7x"></i><br><h2>Virtual</h2>
+                </app-button>
+              </div>
+              <div class="col-sm-6" *ngIf="option">
+                <app-button (click)="withdrawalAc()" [clases]="'btn-danger btn-block'">
+                  <i class="fab fa-cc-mastercard fa-7x"></i><br><h2>Account</h2>
+                </app-button>
+              </div>
+
+              <div class="col-md-12" *ngIf="!option">
+                  <app-withdrawal-wallet *ngIf="withdrawal" (emmiter)="withdrawalWaEmmit($event)"></app-withdrawal-wallet>
+                  <app-withdrawal-account *ngIf="withdrawalac" (emmiter)="withdrawalAcEmmit($event)"></app-withdrawal-account>
+                </div>
+            </div>
+          </div>
+<!-- 
+          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+            <div class="row">
+              <div class="col-sm-6">
+                <app-button [clases]="'btn-success btn-block'">
+                  <i class="fas fa-credit-card fa-7x"></i>
+                </app-button>
+              </div>
+              <div class="col-sm-6">
+                <app-button [clases]="'btn-danger btn-block'">
+                  <i class="fab fa-cc-mastercard fa-7x"></i>
+                </app-button>
+              </div>
+            </div>
+          </div> -->
+
+        </div>
+      </app-card>
+    </div>
+  </div>
+
+</app-container>
