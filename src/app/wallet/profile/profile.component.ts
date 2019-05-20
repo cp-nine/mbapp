@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   // get wallet profile
   async getProfile(){
     let resp = await this.wallletService.getWallet().toPromise();
+    
     if (resp.status != 20) {
       this.message = resp.message;
     } else {

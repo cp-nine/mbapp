@@ -33,13 +33,18 @@ export class TrxService {
 
   // topup
   topup(trx: TrxEntity): Observable<CommonResponse<TrxEntity>>{
-    return this.http.post<CommonResponse<TrxEntity>>(`${this.baseUrl}/trx/topup?access_token=${this.ACCESS_TOKEN}`, trx);
+    return this.http.post<CommonResponse<TrxEntity>>(`${this.baseUrl}/trx/topup`, trx);
   }
 
 
   // transfeer
   transfer(trx: TrxEntity): Observable<CommonResponse<TrxEntity>>{
-    return this.http.post<CommonResponse<TrxEntity>>(`${this.baseUrl}/trx/transfer?access_token=${this.ACCESS_TOKEN}`, trx);
+    return this.http.post<CommonResponse<TrxEntity>>(`${this.baseUrl}/trx/transfer`, trx);
   }
- 
+
+  
+  // withdrawal
+  withdrawal(trx: TrxEntity): Observable<CommonResponse<TrxEntity>>{
+    return this.http.post<CommonResponse<TrxEntity>>(`${this.baseUrl}/trx/withdrawal`, trx);
+  }
 }

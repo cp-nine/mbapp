@@ -1,3 +1,49 @@
-<p>
-  wallet-account works!
-</p>
+<app-container>
+    <div class="row account-list" *ngIf="!profileWallet">
+  
+      <!-- <div class="col-md-12" *ngIf="message !== ''">
+        <app-alert [clases]="'alert-info'">
+          Hello
+        </app-alert>
+      </div> -->
+  
+      <div class="col-sm-12">
+        <app-card>
+          <div class="row">
+            <div class="col-sm-12">
+              <h5>Wallet Accounts &nbsp;
+                <span>
+                    <a routerLink="/customer/create-wallet" class="btn btn-primary btn-sm">
+                      <i class="fas fa-plus-square"></i>
+                    </a>
+                </span>
+              </h5>
+              <hr>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Account Name</th>
+                    <th scope="col">Account Number</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let w of walletAccounts">
+                    <td>{{w.account.accountName}}</td>
+                    <td>{{w.account.accountNumber}}</td>
+                    <td>{{w.account.balance | currency: 'Rp.'}}</td>
+                    <td>
+                      <app-button [type]="'button'" [clases]="'btn-danger btn-sm'"><i class="fas fa-unlink"></i> Unreg</app-button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </app-card>
+      </div>
+    </div>
+  
+  </app-container>
+  

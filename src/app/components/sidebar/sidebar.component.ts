@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 // import * as $ from 'jquery';
 import { Router, NavigationEnd } from '@angular/router';
+import { WalletService } from 'src/app/services/wallet.service';
+import Vwallet from 'src/app/models/vwallet-model';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,14 +12,17 @@ import { Router, NavigationEnd } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   mainMenu; 
+  isWallet: boolean = false;
+  wallet: Vwallet = new Vwallet();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private walletService: WalletService) {
     router.events.subscribe((val) => {
       this.getMenu();
     });
   }
 
   ngOnInit() {
+    this.getProfile();
     // --- togle sidebar -------
     // $('#btn-toggler').on('click', function () {
     //   if($(this).hasClass('btnhide')){
@@ -40,8 +45,27 @@ export class SidebarComponent implements OnInit {
 
   // get menu
   getMenu(){
-   this.mainMenu = localStorage.getItem("wallet") != null ? walletMenu : customerMenu;
+    if (localStorage.getItem("wallet")) {
+      this.isWallet = true;
+      this.mainMenu = walletMenu;
+    } else {
+      this.isWallet = false;
+      this.mainMenu = customerMenu;
+    }
   }
+
+
+  // get wallet profile
+  async getProfile(){
+    let resp = await this.walletService.getWallet().toPromise();
+    
+    if (resp.status == 20) {
+      console.log(resp.data);
+      
+      this.wallet = resp.data;
+    }
+  }
+
 
 }
 

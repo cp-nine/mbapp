@@ -36,7 +36,7 @@ export class AccountService {
 
   // get account by id
   getAccountById(id: number): Observable<CommonResponse<Account>>{
-    return this.http.get<CommonResponse<Account>>(`${this.baseUrl}/customer/account/${id}?access_token=${this.ACCESS_TOKEN}`);
+    return this.http.get<CommonResponse<Account>>(`${this.baseUrl}/customer/account/${id}`);
   }
 
 

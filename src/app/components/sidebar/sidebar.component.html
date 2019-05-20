@@ -9,10 +9,9 @@
        <li class="side-profile">
           <a class="name" routerLink="/profile">
           Ihsan Fauji
-           <!-- <p class="cash-tag">$ {{wallet.cashTag}}</p> -->
+           <p class="cash-tag" *ngIf="isWallet">$ {{wallet.cashTag}}</p>
            </a>
-          <!-- <p style="margin-bottom:5px;" *ngIf="wallet.type!=='E-Banking'">{{wallet.activeBallance | currency:'Rp. '}}</p>
-          <p style="margin-bottom:5px;" *ngIf="wallet.type==='E-Banking'">{{totalBallance | currency:'Rp. '}}</p> -->
+          <p style="margin-bottom:5px;" *ngIf="isWallet">{{wallet.balance | currency:'Rp. '}}</p>
        </li>
        <li class="nav-item nav-dashboard" routerLinkActive="active">
          <a class="nav-link" routerLink="/customer/dashboard"><i class="fas fa-tachometer-alt"></i>&nbsp; Dashboard</a>

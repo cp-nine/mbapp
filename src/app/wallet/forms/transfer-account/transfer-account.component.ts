@@ -22,6 +22,7 @@ export class TransferAccountComponent implements OnInit, OnChanges {
   account: Account = new Account();
   inputPin: boolean = false;
   inputDest: boolean = false;
+  isChecked: boolean = false;
   destination: number;
 
   @Input()
@@ -78,19 +79,20 @@ export class TransferAccountComponent implements OnInit, OnChanges {
   }
 
 
-  checkAccount(event){   
-    alert("Ok") 
-    // this.destination = this.formTransfer.controls.destinationNumber.value;
-    // console.log(this.destination);
-    // this.accountService.getAccountById(this.destination).subscribe(
-    //   resp => {
-    //     if (resp.status != 20){
-    //       this.message = resp.message;
-    //     } else {
-    //       this.account = resp.data;
-    //     }
-    //   }
-    // );
+  checkAccount(){   
+    this.destination = this.formTransfer.controls.destinationNumber.value;
+    this.accountService.getAccountById(this.destination).subscribe(
+      resp => {
+        if(resp.status != 20){
+          this.isChecked = false;
+          this.message = "Account Number Not Valid";
+        } else {
+          this.isChecked = true;
+          this.message = '';
+          this.account = resp.data;
+        }
+      }
+    );
   }
 
 

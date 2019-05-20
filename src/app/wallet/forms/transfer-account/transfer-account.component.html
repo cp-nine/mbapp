@@ -28,8 +28,8 @@
           <label for="">Destination Number <span class="mandatory">{{'' | mandatory}}</span></label>
           <input type="number" formControlName="destinationNumber" class="form-control" placeholder="Destination Number" (keyup.out)="checkAccount($event)">
           <br>
-          <button type="button" class="btn btn-primary" (click)="saveAccount()">Ok</button> &nbsp;
-          <!-- <button type="button" class="btn btn-warning" (click)="checkAccount()">Check</button> -->
+          <button type="button" class="btn btn-primary" (click)="saveAccount()" [disabled]="!isChecked">Ok</button> &nbsp;
+          <button type="button" class="btn btn-warning" (click)="checkAccount()">Check</button>
         </div>
 
       <div class="form-group" *ngIf="inputPin">
@@ -44,6 +44,16 @@
   </div>
 
   <div class="col-md-6">
-    Name: {{account.accountName}}
+      <div class="alert alert-info" *ngIf="message == ''">
+          <div class="text-center">
+            <h3>A / N : {{account.accountName}}</h3>
+            <h5>Total Transfer. {{trx.amount}}</h5>
+          </div>
+      </div>
+      <div class="alert alert-warning" *ngIf="message != ''">
+          <div class="text-center">
+            <h3>{{message}}</h3>
+          </div>
+      </div>
   </div>
 </div>

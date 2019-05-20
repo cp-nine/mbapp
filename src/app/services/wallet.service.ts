@@ -31,30 +31,30 @@ export class WalletService {
 
   // get account customer profile
   getWallets(): Observable<CommonResponse<Vwallet[]>>{
-    return this.http.get<CommonResponse<Vwallet[]>>(`${this.baseUrl}/customer/${this.CIF}/wallets?access_token=${this.ACCESS_TOKEN}`);
+    return this.http.get<CommonResponse<Vwallet[]>>(`${this.baseUrl}/customer/${this.CIF}/wallets`);
   }
 
    // get account customer profile
    getWallet(): Observable<CommonResponse<Vwallet>>{
-    return this.http.get<CommonResponse<Vwallet>>(`${this.baseUrl}/customer/wallet/${Number(this.WID)}?access_token=${this.ACCESS_TOKEN}`);
+    return this.http.get<CommonResponse<Vwallet>>(`${this.baseUrl}/customer/wallet/${Number(this.WID)}`);
   }
 
 
   // get account customer profile
   getWalletAccount(): Observable<CommonResponse<WalletAccount[]>>{
-    return this.http.get<CommonResponse<WalletAccount[]>>(`${this.baseUrl}/customer/wallet/${Number(this.WID)}/accounts?access_token=${this.ACCESS_TOKEN}`);
+    return this.http.get<CommonResponse<WalletAccount[]>>(`${this.baseUrl}/customer/wallet/${Number(this.WID)}/accounts`);
   }
 
 
   // get wallet account by castag
-  getWalletByCashtag(cashtag: string): Observable<CommonResponse<WalletAccount[]>>{
-    return this.http.get<CommonResponse<WalletAccount[]>>(`${this.baseUrl}/customer/wallet/${cashtag}/accounts?access_token=${this.ACCESS_TOKEN}`);
+  getWalletByCashtag(cashtag: string): Observable<CommonResponse<WalletAccount>>{
+    return this.http.get<CommonResponse<WalletAccount>>(`${this.baseUrl}/customer/wallet/cashtag/${cashtag}`);
   }
 
 
   // create wallet
   createWallet(wallet: Wallet): Observable<CommonResponse<Vwallet[]>>{
-    return this.http.post<CommonResponse<Vwallet[]>>(`${this.baseUrl}/customer/${this.CIF}/wallet?access_token=${this.ACCESS_TOKEN}`, wallet);
+    return this.http.post<CommonResponse<Vwallet[]>>(`${this.baseUrl}/customer/${this.CIF}/wallet`, wallet);
   }
  
 }
