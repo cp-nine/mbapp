@@ -18,8 +18,8 @@ export class WalletService {
   WID = localStorage.getItem("wallet");
   ACCESS_TOKEN = localStorage.getItem("act");;
 
-  // baseUrl = "http://localhost:80/api/api/v1";
-  baseUrl = "http://localhost:8080/api/v1";
+  baseUrl = "http://localhost:80/api/api/v1";
+  // baseUrl = "http://localhost:8080/api/v1";
 
   private _refresh = new Subject<void>();
 
