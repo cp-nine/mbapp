@@ -6,7 +6,7 @@ import { WalletAccountComponent } from './wallet-account/wallet-account.componen
 import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'/wallet/profile', pathMatch: 'full'},
+  {path:'', redirectTo:'/profile', pathMatch: 'full'},
   {path:'profile', component: ProfileComponent},
   {path:'transaction', component: TransactionComponent},
   {path:'wallet-account', component: WalletAccountComponent},

@@ -60,8 +60,6 @@ export class SidebarComponent implements OnInit {
     let resp = await this.walletService.getWallet().toPromise();
     
     if (resp.status == 20) {
-      console.log(resp.data);
-      
       this.wallet = resp.data;
     }
   }

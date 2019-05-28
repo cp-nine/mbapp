@@ -16,6 +16,7 @@ export class BasicAuthService implements HttpInterceptor {
     console.log(`Current headers : ${JSON.stringify(request.headers)}`);
     
     const token = localStorage.getItem("act");
+    const refreshToken = localStorage.getItem("rsh");
 
     if (token) {
       request = request.clone({
@@ -23,7 +24,8 @@ export class BasicAuthService implements HttpInterceptor {
       });
     } else {
       request = request.clone({
-        headers: request.headers.set('Authorization', `Basic ${this.httpService.getBase64token()}`)
+        headers: request.headers.set('Authorization', `Basic ${this.httpService.getBase64token()}`),
+        params: request.params.set('refresh_token', refreshToken)
       });
     }
 
@@ -35,12 +37,16 @@ export class BasicAuthService implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        let data = {};
-          data = {
-              reason: error && error.error.reason ? error.error.reason : '',
-              status: error.status
-          };
-          console.log("Error: "+ JSON.stringify(data));          
+        if(error.status == 401){
+          localStorage.removeItem("act");
+          this.httpService.refreshToken().subscribe(
+            resp => {
+              console.log(resp),
+              localStorage.setItem("act", resp.access_token);
+              localStorage.setItem("newtoken", resp.access_token);
+            }            
+          );
+        }         
           return throwError(error);
       })
     );
